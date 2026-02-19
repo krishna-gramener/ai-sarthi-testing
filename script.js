@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Find a column that matches 'questions' (case-insensitive, ignoring whitespace)
                 const questionsColumn = columnNames.find(column => {
                     const normalizedColumn = column.trim().toLowerCase();
-                    return normalizedColumn === 'questions';
+                    return (normalizedColumn === 'questions' || normalizedColumn === 'question');
                 });
                 
                 if (!questionsColumn) {
