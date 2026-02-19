@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
             apiUrlInput.value = API_URL;
         } else {
             // Default API URL for convenience
-            apiUrlInput.value = "https://niti-ai-insights-api-1066334120262.asia-south1.run.app/api/v1/query";
+            apiUrlInput.value = "";
         }
         
         apiUrlPopup.style.display = 'flex';
