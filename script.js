@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
     const csvFileInput = document.getElementById('csvFile');
     const fileNameSpan = document.getElementById('file-name');
+    const conversationIdInput = document.getElementById('conversation_id');
     const processBtn = document.getElementById('processBtn');
     const timeEstimateSection = document.querySelector('.time-estimate');
     const timeEstimateText = document.getElementById('time-estimate-text').querySelector('span');
@@ -210,13 +211,21 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             addLogEntry(`Sending request to API: "${question.substring(0, 30)}..."`, 'info');
             
+            // Get conversation_id from input field, if provided
+            const conversationId = conversationIdInput.value.trim() || null;
+            
             const payload = {
                 query: question,
                 language: "english",
                 user_id: "testinggenius@gmail.com",
                 guest_id: null,
-                conversation_id: null
+                conversation_id: conversationId
             };
+            
+            // Log if conversation_id is being used
+            if (conversationId) {
+                addLogEntry(`Using conversation_id: ${conversationId}`, 'info');
+            }
             
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 300000); // 5 minutes timeout
